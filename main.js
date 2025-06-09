@@ -10,7 +10,7 @@ let currentIndex = 0;
 let videoStartTime = Date.now();
 
 function sendData(participant, videoIndex, timeSpent) {
-  fetch("https://script.google.com/macros/s/AKfycbzFo1rwzYt5CsXKVx0g-G2dR93QFZLyQGBkLTYluDWd_wS2aa0FlS-3MkboMHeJTMNQ/exec", {
+  fetch("/.netlify/functions/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -18,7 +18,7 @@ function sendData(participant, videoIndex, timeSpent) {
       videoIndex: videoIndex,
       timeSpent: timeSpent
     })
-  }).then(res => res.text()).then(console.log).catch(console.error);
+  })
 }
 
 function loadVideo(index) {
